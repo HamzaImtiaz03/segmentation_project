@@ -1,0 +1,17 @@
+# Core deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Segmentation models with pretrained (ImageNet) encoders -> transfer learning
+segmentation-models-pytorch>=0.3.3
+
+# Data / augmentation
+albumentations>=1.3.0
+opencv-python-headless>=4.7.0
+numpy>=1.23.0
+Pillow>=9.0.0
+
+# Metrics / utils / plotting
+scikit-learn>=1.2.0
+matplotlib>=3.6.0
+tqdm>=4.64.0
