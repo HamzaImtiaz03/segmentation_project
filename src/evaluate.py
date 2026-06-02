@@ -98,7 +98,10 @@ def visualize_predictions(model, dataset, device, indices: Optional[List[int]] =
 
 def load_checkpoint(path: str, device) -> tuple:
     """Rebuild the model+config from a saved checkpoint and load weights."""
-    ckpt = torch.load(path, map_location=device)
+    # weights_only=False because the checkpoint also stores config/metrics (incl.
+    # numpy arrays); PyTorch>=2.6 defaults to True and would reject it. Safe here
+    # since we created the file ourselves.
+    ckpt = torch.load(path, map_location=device, weights_only=False)
     cfg = Config(**ckpt["config"])
     model = build_model(cfg).to(device)
     model.load_state_dict(ckpt["model"])
